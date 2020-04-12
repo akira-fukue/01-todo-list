@@ -80,3 +80,32 @@ modules.exports = {
   },
 }
 ```
+**06: public files**
+_public/index.js_
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 - Todo List</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="bundle.js"></script>
+</body>
+</html>
+```
+* o mesmo resultado pode ser alcançado com o plugin emmet do VSCode seguindo os seguintes commandos
+```
+// No inicio do arquivo
+html:5 (enter)
+
+// Dentro do body
+div#app (enter)
+
+// Depois da <div></div>
+script:src (enter)
+
+// lembre-se de usar src="bundle.js"
+```
