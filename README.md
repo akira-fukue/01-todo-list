@@ -40,6 +40,7 @@ mkdir src public
 ```bash
 touch
 public/index.html
+src/index.js
 babel.config.js
 webpack.config.js
 ```
@@ -47,7 +48,7 @@ webpack.config.js
 **05: config files**
 _babel.config.js_
 ```js
-modules.exports = {
+module.exports = {
   presets: [
     "@babel/preset-env",
     "@babel/preset-react"
@@ -58,7 +59,7 @@ modules.exports = {
 _webpack.config.js_
 ```js
 const path = require("path");
-modules.exports = {
+module.exports = {
   entry:  path.resolve(__direname, "src", "index.js"),
   output: {
     path: path.resolve(__dirname, "public"),
@@ -108,4 +109,10 @@ div#app (enter)
 script:src (enter)
 
 // lembre-se de usar src="bundle.js"
+```
+**07: package.json scripts**
+```json
+scripts: {
+  "listen": "yarn webpack-dev-server --mode development"
+}
 ```
