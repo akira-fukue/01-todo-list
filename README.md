@@ -23,6 +23,9 @@ react-dom
 webpack
 webpack-cli
 babel-loader
+style-loader
+css-loader
+file-loader
 ```
 
 **02: dev-dependencies**
@@ -33,7 +36,10 @@ webpack-dev-server
 
 **03: folders**
 ```bash
-mkdir src public
+mkdir
+src
+src/components
+public
 ```
 
 **04: files**
@@ -41,6 +47,7 @@ mkdir src public
 touch
 public/index.html
 src/index.js
+src/components/App.js
 babel.config.js
 webpack.config.js
 ```
@@ -60,7 +67,7 @@ _webpack.config.js_
 ```js
 const path = require("path");
 module.exports = {
-  entry:  path.resolve(__direname, "src", "index.js"),
+  entry: path.resolve(__dirname, "src", "index.js"),
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
@@ -77,9 +84,23 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-    ]
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {loader: "style-loader"},
+          {loader: "css-loader"},
+        ]
+      },
+      {
+        test: /\.(png|gif|jpe?g)$/,
+        use: {
+          loader: "file-loader"
+        },
+      },
+    ],
   },
-}
+};
 ```
 **06: public files**
 _public/index.js_
@@ -116,3 +137,19 @@ scripts: {
   "listen": "yarn webpack-dev-server --mode development"
 }
 ```
+#### Conclusão do projeto
+Muitos dos estilos foram feitos dentro do componente ```List```. Provavelmente ainda tem muito para melhorar em relação a CSS e componentização. Achei o componente muito grande, mas como ainda não sei lidar com estado entre componentes, resolvi fazer desta forma.
+
+#### Resultado
+![image](./img/projeto_01.png)
+
+#### Possíveis melhorias
+- Banco de dados ou LocalStorage
+- Socket.io para compartilhar estado com outros usuários
+- Salvar lista
+- Compartilhar lista
+- Editar lista
+- Dupla verificação para DELETAR item
+
+##### Contato
+<felipe.fukue@gmail.com>
