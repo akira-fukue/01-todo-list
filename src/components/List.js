@@ -10,7 +10,18 @@ import {
 function List() {
   const [todos, setTodos] = useState([]);
 
+  useEffect(() => {
+    const userLocaStorage = JSON.parse(localStorage.getItem("userState"));
+    console.log(userLocaStorage);
+    const userState = userLocaStorage === null ? [] : userLocaStorage;
+    setTodos(userState);
+  }, []);
+
   const [_id, setId] = useState(0);
+
+  function refreshLocalStorage(todosUpdated) {
+    localStorage.setItem("userState", JSON.stringify(todosUpdated));
+  }
 
   function handleAddTodo() {
     const itemText = document.getElementById("item").value;
@@ -27,7 +38,10 @@ function List() {
 
     setId(_id + 1);
 
-    setTodos([...todos, todo]);
+    const todosUpdated = [...todos, todo];
+
+    setTodos(todosUpdated);
+    refreshLocalStorage(todosUpdated);
   }
 
   function handleCompleteTodo(id) {
@@ -39,12 +53,14 @@ function List() {
     });
 
     setTodos(todosUpdated);
+    refreshLocalStorage(todosUpdated);
   }
 
   function handleDeleteTodo(id) {
     const todosUpdated = todos.filter((todo) => todo.id !== id);
 
     setTodos(todosUpdated);
+    refreshLocalStorage(todosUpdated);
   }
 
   return (
@@ -102,7 +118,7 @@ const styles = {
     justifyContent: "space-between",
     alignSelf: "center",
     alignItems: "baseline",
-    width: "380px",
+    width: "330px",
     height: "45px",
     minHeight: "45px",
     borderBottom: "1px solid rgba(0,0,0,0.1)",
