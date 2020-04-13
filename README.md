@@ -141,6 +141,9 @@ scripts: {
 Muitos dos estilos foram feitos dentro do componente ```List```. Provavelmente ainda tem muito para melhorar em relação a CSS e componentização. Achei o componente muito grande, mas como ainda não sei lidar com estado entre componentes, resolvi fazer desta forma.
 
 #### Resultado
+
+[App demo](https://akira-01-todolist.netlify.com/)
+
 ![image](./img/projeto_01.png)
 
 #### Possíveis melhorias
