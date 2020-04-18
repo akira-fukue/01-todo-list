@@ -142,7 +142,7 @@ Muitos dos estilos foram feitos dentro do componente ```List```. Provavelmente a
 
 #### Resultado
 
-[App demo](https://akira-01-todolist.netlify.com/)
+[App demo](https://akira-listinha.netlify.app/)
 
 ![image](./img/projeto_01.png)
 
